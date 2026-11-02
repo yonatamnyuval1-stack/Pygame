@@ -111,6 +111,119 @@ def the_picture():
         print("he waits. he is ten. he can wait longer than you")
         the_picture()
     
+def his_house():
+    print("the house is small. shoes by the door, a radio talking about the weather")
+    print("his mom is at the table with tea")
+    print("she looks up and the cup hits the saucer wrong")
+    print(" Harry says 'I found him'. she says your name, a name you don't use.")
+    print("then she sees the watch and she sits down very slowly")
+    choice = ask("1: tell her the truth\n2: say you're just lost\n3: put the watch on the table")
+    if choice == "1":
+        tell_truth()
+    elif choice == "2":
+        pretend
+    elif choice == "3":
+        give_watch
+    else:
+        print("nobody moves. the radio keeps talking")
+        his_house()
+
+def tell_truth():
+    print("you tell her you're not from today")
+    print("you tell her the sidewalk, the newspaper, the hands going back")
+    print("she doesn't laugh")
+    print("'he said the same thing' she says. 'before he walked out'")
+    print("'if you're him, you're late. if you're not, take that watch of the street'")
+    print("Harry is in the doorway, listening to all of it")
+    the_choice()
+
+def pretend():
+    print("you say you're lost.")
+    print("she almost believes you. then the watch skips, out load, in her kitchen")
+    print("Harry says 'thats uncle's'. she closes her eyes")
+    print("'don't lie in my house' she says. not angry. just done")
+
+def give_watch():
+    print("you set it on the table. it slides back to your hand")
+    print("no dramatic, just... it won't stay off you")
+    print("his mom watches that happen and nods like she expected it")
+    print("'then you don't get to drop it and leave' she says")
+    print("'he tried. the morning still happened'")
+    the_choice()
+
+def the_choice():
+    print("the watch is hot now.")
+    print("outside, a bus pulls out up at the stop. the door open, nobody gets off")
+    print("Harry looks at you like you're the one who decides if today finishes")
+    choice = ask("1: get on the bus and go back\n2: stay and walk Harry to school\n3: smash the watch")
+    if choice == "1":
+        ending_bus()
+    elif choice == "2":
+        ending_stay()
+    elif choice == "3":
+        ending_smash()
+    else:
+        print("the bus door is still open and Harry is still waiting. you picked invalid number and now everyone's have to wait. great, just great")
+        the_choice()
+
+def ending_bus():
+    print("you apologised to Harry.")
+    print("his mom doesn't stop you. she just says 'don't miss it this time'")
+    print("you run. the bus smells like wet coats")
+    print("the second you sit, the light changes")
+    print(" you're one your sidewalk. your sidewalk. cars you know")
+    print(" the newspaper in the gutter is today")
+    print("but in your pocket there's a bus ticket, may 14, and the seat number is still warm")
+    print("for now, the watch is quiet")
+
+def ending_stay():
+    print("you say you'll talk to him. his mom hands you a jacket that almost fits")
+    print("Harry talks the whole way. a test, friends, normal stuffs")
+    print("at the gate he stops")
+    print("'if you stay, does he still leave?' he asks")
+    print("you don't know. you tell him that, which is the first true easy thing today")
+    print("he goes in. the watch stops backwards and just... ticks forward")
+    print("you look at the street. you don't know the way home from here")
+    print("maybe that's the advanture. maybe you already picked")
+
+def ending_smash():
+    print("you hit the watch on the curb. the glass goes into your palm")
+    print("Harry is there and also not. you see the read jacket, then a empty doorway")
+    print("two versions of the bus stop. one door open. one gone")
+    choice = ask("1: step toward 1998\n2: step toward now")
+
+    if choice == "1":
+        print("you pick the older street. your hands is still bleeding")
+        print("Harry is at the lamp post")
+        print("he sees the broken watch and says 'ok, then we do it without it'")
+        print("you don't know if thats better. you go with him anyway")
+    elif choice == "2":    
+        print("you pick your own year. the noise comes back all at once")
+        print("on the ground is the bent photo")
+        print("the face in it is softer than yours. you put it in your jacket")
+    else:
+        print("you wait too long. the street picks for you")
+        print("you wake up on the bench. both years are gone")
+        print("the watch is fixed. the hands are going backwards again")
+
+def night_street():
+    print("the woman says 'I told him not to wear it out of the house'")
+    print("she thinks you're him. the older one.")
+    print("rain in your collar. the watch is cold this time, not hot")
+    choice = ask("1: ask where Harry\n2: ask how to get back to the morning")
+    if choice == "1":
+        print("'school' she says. 'he's ten. he's always at school in this one'")
+        print("she looks tired in a way that took years.")
+        print("'if you can still find the morning, go. i already lived this night'")
+        print("you twist the crown the other way before you can think about it")
+        print("you get another try. don't waste the morning")
+        street()
+    elif choice == "2":
+        print("she points at your wrist. 'back. always back. it only goes one way until you mean it'")
+        ending_bus()
+    else:
+        print("she waits in the rain like she's done it to you before")
+        night_street()
 
 def main():
     print("Hello! you going to your adventure!")
