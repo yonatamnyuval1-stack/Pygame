@@ -227,17 +227,5 @@ def night_street():
 
 def main():
     print("Hello! you going to your adventure!")
-    print("Please choose your adventure number!")
-    print("1: Time travel")
-    print("2: Explore the ocean")
-    print("3: servive on mars")
-    choose1 = input("> ")
-    if choose1 == "1":
-        time_travel()
-    elif choose1 == "2":
-        ocean()
-    elif choose1 == "3":
-        mars()
-    else:
-        print("invalid choose")
+    time_travel()
 main()
