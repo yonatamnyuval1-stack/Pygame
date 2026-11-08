@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo</title>
+<style>
+body {
+  background:black;
+  color: #dddddd;
+  font-family: consolas, monospace;
+  font-size: 22px;
+  margin: 0;
+}
+#screen {
+  padding: 20px;
+  white-space: pre-wrap;
+}
+input{
+    background: black;
+    color: #dddddd;
+    border: 0;
+    font: inherit;
+    outline: none;
+}
+</style>
+</head>
+<body>
+<div id="screen"><span id="log"></span><input id="line" autofocus></div>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+<script>
+var log = document.getElementById("log");
+var line = document.getElementById("line");
+var waiting = null;
+
+function show(text) {
+  log.textContent += text;
+  window.scrollTo(0, document.body.scrollHeight);
+}
+line.onkeydown = function (e) {
+    if (e.key != "Enter") return;
+    if (!waiting) return;
+    var answer = line.value;
+    show(answer + "\n");
+    line.value = "";
+    var done = waiting;
+    waiting = null;
+    done(answer);
+};
+
+function readFile(name) {
+    if(Sk.builtinFiles === undefined || Sk.builtinFiles["files"][name] === undefined){
+        throw "File not found: '" + name;
+    }
+    return Sk.builtinFiles["files"][name];
+}
+function askUser(prompt) {
+    show(prompt);
+    return new Promise(function (resolve) {
+        waiting = resolve;
+    });
+}
+fetch("main.py", { cache: "no-store" }).then(function (res) {
+  return res.text();
+}).then(function (code) {
+  Sk.configure({
+    output: show,
+    read: readFile,
+    inputfun: askUser,
+    inputfunTakesPrompt: true,
+    __future__: Sk.python3
+  });
+  return Sk.misceval.asyncToPromise(function () {
+    return Sk.importMainWithBody("<stdin>", false, code, true);
+  }).then(function () {
+    line.style.display = "none";
+  });
+}).catch(function (err) {
+  show("\n" + err + "\n");
+});
+</script>

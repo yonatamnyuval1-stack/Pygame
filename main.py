@@ -88,9 +88,9 @@ def talk_to_kid(saw_you_kick):
         print("'you look like the picture' he says. 'but older and tired'")
     print("his name is Harry(not Potter btw).")
     print("the watch ticks backwards, loud")
-    choice = ("1: ask what picture\n2: go with him")
-    if chice == "1":
-        the_pictue()
+    choice = ask("1: ask what picture\n2: go with him")
+    if choice == "1":
+        the_picture()
     elif choice == "2":
         his_house()
     else:
@@ -103,6 +103,7 @@ def the_picture():
     print("'mom's brother' he says. 'he left this morning and the bus never got him'")
     print("you don't remember this morning. you remember your own morning, the real one")
     print("Harry is already walking toward a side street. 'come on. she'll want to see'")
+    choice = ask("1: go with him\n2: try the watch again")
     if choice == "1":
         his_house()
     elif choice == "2":
@@ -121,9 +122,9 @@ def his_house():
     if choice == "1":
         tell_truth()
     elif choice == "2":
-        pretend
+        pretend()
     elif choice == "3":
-        give_watch
+        give_watch()
     else:
         print("nobody moves. the radio keeps talking")
         his_house()
